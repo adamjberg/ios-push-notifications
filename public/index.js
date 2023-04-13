@@ -29,7 +29,7 @@ async function run() {
     if (result === "granted") {
       const subscription = await registration.pushManager.subscribe({
         applicationServerKey: urlBase64ToUint8Array(
-          "BFkG2HKrQ3BYTS_4z1S1pRwNoX4vvQhCwi3q9Hum7nQ8p9FHU3nLAjzmGWet_63jkLD2XXFp2rgranujXvCJd4k"
+          "[[INSERT YOUR PUBLIC VAPID KEY HERE]]"
         ),
         userVisibleOnly: true,
       });
