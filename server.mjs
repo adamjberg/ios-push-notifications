@@ -30,6 +30,7 @@ app.get('/send-notification', async (req, res) => {
 })
 
 app.post("/save-subscription", async (req, res) => {
+  console.log("save subscription");
   subscriptionData = req.body;
   res.sendStatus(200);
 });
