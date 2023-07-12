@@ -20,6 +20,7 @@ async function run() {
     button.addEventListener("click", async () => {
       // Triggers popup to request access to send notifications
       const result = await window.Notification.requestPermission();
+      console.log(result);
 
       // If the user rejects the permission result will be "denied"
       if (result === "granted") {
@@ -29,14 +30,17 @@ async function run() {
             "BFkG2HKrQ3BYTS_4z1S1pRwNoX4vvQhCwi3q9Hum7nQ8p9FHU3nLAjzmGWet_63jkLD2XXFp2rgranujXvCJd4k",
           userVisibleOnly: true,
         });
+        console.log(subscription);
 
-        await fetch("/save-subscription", {
+        const res = await fetch("/save-subscription", {
           method: "post",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(subscription),
         });
+
+        console.log(res);
 
         window.location.reload();
       }
