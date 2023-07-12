@@ -16,12 +16,17 @@ webpush.setVapidDetails(
   process.env.VAPID_PRIVATE_KEY
 )
 
-app.get('/send-notification', (req, res) => {
-  webpush.sendNotification(subscriptionData, JSON.stringify({
-    title: "Hello World",
-    body: "Notification sent from backend"
-  }))
-  res.sendStatus(200);
+app.get('/send-notification', async (req, res) => {
+  try {
+    await webpush.sendNotification(subscriptionData, JSON.stringify({
+      title: "Hello World",
+      body: "Notification sent from backend"
+    }));
+    res.sendStatus(200);
+  } catch(err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 })
 
 app.post("/save-subscription", async (req, res) => {
@@ -31,4 +36,4 @@ app.post("/save-subscription", async (req, res) => {
 
 app.use(express.static("./public"));
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
