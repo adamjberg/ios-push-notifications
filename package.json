@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "node server.mjs",
+    "build": "",
     "dev": "node --watch server.mjs"
   },
   "dependencies": {
